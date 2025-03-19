@@ -1,0 +1,32 @@
+body{
+    background-color: #D2D4DA;
+}
+
+.title{
+    text-align: center;
+}
+
+.divContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    width: 35%; /* Se adapta al contenedor */
+    aspect-ratio: 1 / 1; /* Mantiene la proporción cuadrada */
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    background-color: #f3f4f8;
+}
+
+ .square{      
+    width: calc(100% / 16); /* 16 columnas */
+    height: calc(100% / 16); /* 16 filas */
+    border: solid 0px black;
+    background-color: white;
+    text-align: center;
+}
+
+.square:hover{
+    background-color: red;
+}
+
