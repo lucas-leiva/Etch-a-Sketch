@@ -10,19 +10,20 @@ body{
     display: flex;
     flex-wrap: wrap;
     gap: 0px;
-    width: 35%; /* Se adapta al contenedor */
+    width: 50%; /* Se adapta al contenedor */
     aspect-ratio: 1 / 1; /* Mantiene la proporción cuadrada */
     margin-left: auto;
     margin-right: auto;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     background-color: #f3f4f8;
+    box-shadow: 5px 5px 10px gray;
 }
 
- .square{      
+.square{      
     width: calc(100% / 16); /* 16 columnas */
     height: calc(100% / 16); /* 16 filas */
-    border: solid 0px black;
-    background-color: white;
+    /* border: solid 1px black; */
+    /* background-color: white; */
     text-align: center;
 }
 
@@ -30,3 +31,10 @@ body{
     background-color: red;
 }
 
+.square-change{
+    background-color: blue;
+}
+
+.square-change:hover{
+    background-color: blue;
+}
