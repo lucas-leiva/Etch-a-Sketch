@@ -22,19 +22,9 @@ body{
 .square{      
     width: calc(100% / 16); /* 16 columnas */
     height: calc(100% / 16); /* 16 filas */
-    /* border: solid 1px black; */
-    /* background-color: white; */
     text-align: center;
 }
 
-.square:hover{
-    background-color: red;
-}
-
 .square-change{
-    background-color: blue;
-}
-
-.square-change:hover{
     background-color: blue;
 }

@@ -1,4 +1,5 @@
 let isMouseDown = false;
+let isRandomColor = false; 
 
 document.body.onload = () => addElement(); // Se ejecuta al cargar la página
 
@@ -28,24 +29,42 @@ function addElement() {
     }
 }
 
-
 document.addEventListener("mouseup", () => {
-    isMouseDown = false;
-}); 
+    isMouseDown = false; // Se desactiva el arrastre
+});
 
-function color(newDiv) {   
+function color(newDiv) {
     newDiv.addEventListener("mousedown", () => {
-        newDiv.classList.toggle("square-change");
         isMouseDown = true;
+        applyColor(newDiv); // Cambia el color al hacer clic
     });
 
     newDiv.addEventListener("mouseover", () => {
         if (isMouseDown) {
-            newDiv.style.backgroundColor = "blue";
+            applyColor(newDiv); // Cambia el color al arrastrar
         }
     });
-
 }
+
+document.getElementById("toggleRandom").addEventListener("click", () => {
+    isRandomColor = !isRandomColor; // Alterna el estado
+    const btn = document.getElementById("toggleRandom");
+    btn.textContent = isRandomColor ? "Desactivar Colores Aleatorios" : "Activar Colores Aleatorios";
+});
+
+function applyColor(div) {
+    div.style.backgroundColor = isRandomColor ? getRandomColor() : "blue"; // Usa color aleatorio si está activado
+}
+
+// Genera un color aleatorio en formato RGB
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+
 
 function cleanSquare() {
     const divContainer = document.getElementById("divContainer");
