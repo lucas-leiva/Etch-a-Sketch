@@ -7,26 +7,31 @@ function addElement() {
     const inputNumber = document.getElementById("input");
     let valueUser = inputNumber.value.trim(); // Obtener el valor actual del input
     let size = valueUser ? valueUser * valueUser : 256;
+    let label = document.getElementById("label");
+    label.innerHTML = valueUser ? valueUser + " x " : "16 x";
 
     const divContainer = document.getElementById("divContainer");
 
     // Limpiar el contenedor antes de agregar nuevos elementos
     cleanSquare();
 
-    for (let i = 0; i < size; i++) {
-        const newDiv = document.createElement("div");
-        newDiv.classList.add("square");
+    if(size !=0){
+        deleteSquare();
+        for (let i = 0; i < size; i++) {
+            const newDiv = document.createElement("div");
+            newDiv.classList.add("square");
 
-        if (!valueUser) {
-            // newDiv.innerText = i + 1; // Solo numerar si es el caso por defecto
-        } else {
-            newDiv.style.height = `calc(100% / ${valueUser})`;
-            newDiv.style.width = `calc(100% / ${valueUser})`;
+            if (!valueUser) {
+                // newDiv.innerText = i + 1; // Solo numerar si es el caso por defecto
+            } else {
+                newDiv.style.height = `calc(100% / ${valueUser})`;
+                newDiv.style.width = `calc(100% / ${valueUser})`;
+            }
+
+            divContainer.appendChild(newDiv);
+            color(newDiv);
         }
-
-        divContainer.appendChild(newDiv);
-        color(newDiv);
-    }
+    }    
 }
 
 document.addEventListener("mouseup", () => {
@@ -64,9 +69,17 @@ function getRandomColor() {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
-
-
 function cleanSquare() {
+    const divContainer = document.getElementsByClassName("square");
+    
+    if(divContainer){
+        for(let i = 0; i<divContainer.length; i++){
+           divContainer[i].style.backgroundColor = "white"; 
+        }        
+    }
+}
+
+function deleteSquare(){
     const divContainer = document.getElementById("divContainer");
     while (divContainer.firstChild) {
         divContainer.removeChild(divContainer.firstChild);
