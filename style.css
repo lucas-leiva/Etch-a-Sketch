@@ -4,18 +4,61 @@ body{
 
 .title{
     text-align: center;
+    margin-bottom: 0;
+    margin-left: 100px;
 }
 
-.divContainer{
+.main{
+    display: flex;
+   
+    justify-content: flex-start; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    gap: 10px;  /*Espaciado entre elementos */
+    height: 100vh; /* Ocupa toda la pantalla */    
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    padding-left: 100px;
+}
+
+.btn{
+    padding: 10px 20px;
+    font-size: 16px;
+    width: 300px;
+    border: none;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center; /* Alinea el input y el label en el mismo nivel */
+    gap: 5px; /* Espaciado entre el input y el label */
+}
+
+#input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.sketchContainer{
     display: flex;
     flex-wrap: wrap;
-    gap: 0px;
-    width: 50%; 
-    aspect-ratio: 4 / 3;
-    margin-left: auto;
-    margin-right: auto;
+    width: 500px; /* Tamaño fijo para evitar que se agrande demasiado */
+    height: 500px; /* Asegura una proporción cuadrada */
     background-color: #f3f4f8;
     box-shadow: 5px 5px 10px gray;
+    flex-shrink: 0; /* Evita que se reduzca si el espacio es limitado */
+
+    margin-left: 100px;
 }
 
 .square{      
@@ -27,3 +70,4 @@ body{
 .square-change{
     background-color: blue;
 }
+

@@ -7,15 +7,27 @@
     <title>Document</title>
 </head>
 <body>    
-    <h1 class="title">Etch-a-Sketch</h1>
-    <div class="divContainer" id="divContainer"></div>
-    <div>
-        <label id="label" for="input"></label>
-        <input type="number" name="" id="input" min="1"  max="100" placeholder="16">
-    </div>
-    <button id="toggleRandom">RANDOM COLOR</button>
-    <button onclick="cleanSquare()">DELETE</button>
+    <header>
+        <h1 class="title">Etch-a-Sketch</h1>
+    </header>
 
+    <main class="main">
+        <div class="btn-container">
+            <button class="btn" id="toggleRandom">RANDOM COLOR</button>
+            <button class="btn" onclick="cleanSquare()">DELETE</button> 
+
+            <div class="input-container">
+                <label id="label" for="input">Size:</label>   
+                <input type="number" id="input" min="1" max="100" placeholder="16">  
+            </div>
+        </div>
+  
+        <div class="sketchContainer" id="divContainer"></div>
+
+    </main>   
+           
+        
+    
     <script src="javascript.js"></script>
 </body>
 </html>
