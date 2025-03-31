@@ -58,7 +58,7 @@ document.getElementById("toggleRandom").addEventListener("click", () => {
 });
 
 function applyColor(div) {
-    div.style.backgroundColor = isRandomColor ? getRandomColor() : "blue"; // Usa color aleatorio si está activado
+    div.style.backgroundColor = isRandomColor ? getRandomColor() : "#212121"; // Usa color aleatorio si está activado
 }
 
 // Genera un color aleatorio en formato RGB
@@ -74,7 +74,7 @@ function cleanSquare() {
     
     if(divContainer){
         for(let i = 0; i<divContainer.length; i++){
-           divContainer[i].style.backgroundColor = "white"; 
+           divContainer[i].style.backgroundColor = "#fcf4f1"; 
         }        
     }
 }

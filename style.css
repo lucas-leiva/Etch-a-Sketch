@@ -1,16 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body{
-    background-color: #D2D4DA;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #ffe401;
 }
 
 .title{
+    color: #184e78;
     text-align: center;
     margin-bottom: 0;
     margin-left: 100px;
+    text-shadow: 5px 0 0 #c53e47;
 }
 
 .main{
-    display: flex;
-   
+    display: flex;   
     justify-content: flex-start; /* Centra los elementos horizontalmente */
     align-items: center; /* Centra verticalmente */
     gap: 10px;  /*Espaciado entre elementos */
@@ -20,20 +26,26 @@ body{
 .btn-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
     align-items: flex-start;
     padding-left: 100px;
 }
 
 .btn{
-    padding: 10px 20px;
-    font-size: 16px;
-    width: 300px;
+    padding: 15px 20px;
+    font-size: 10px;
+    width: 200px;
     border: none;
     cursor: pointer;
-    background-color: #3498db;
+    background-color: #184e78;
     color: white;
-    border-radius: 5px;
+    border-radius: 1px;
+    box-shadow: 5px 5px 0 #c53e47;
+    font-family: "Press Start 2P", system-ui;
+}
+
+.btn:hover{
+    transform: translateY(-5px);
 }
 
 .input-container {
@@ -47,6 +59,7 @@ body{
     padding: 5px;
     text-align: center;
     font-size: 16px;
+    font-family: "Press Start 2P", system-ui;
 }
 
 .sketchContainer{
@@ -54,10 +67,9 @@ body{
     flex-wrap: wrap;
     width: 500px; /* Tamaño fijo para evitar que se agrande demasiado */
     height: 500px; /* Asegura una proporción cuadrada */
-    background-color: #f3f4f8;
-    box-shadow: 5px 5px 10px gray;
+    background-color: #fcf4f1;
+    border: 3px outset #333;    
     flex-shrink: 0; /* Evita que se reduzca si el espacio es limitado */
-
     margin-left: 100px;
 }
 
@@ -70,4 +82,3 @@ body{
 .square-change{
     background-color: blue;
 }
-
