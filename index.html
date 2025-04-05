@@ -13,18 +13,27 @@
 
     <main class="main">
         <div class="btn-container">
-            <button class="btn" id="toggleRandom">RANDOM COLOR</button>
-            <button class="btn" onclick="cleanSquare()">DELETE</button> 
-
+            <div class="buttons">            
+                <button class="btn" id="toggleRandom">RANDOMIZED COLOR</button>
+                <button class="btn" id= "deleteONESquare">DELETE</button> 
+                <button class="btn" onclick="cleanSquare()">CLEAR</button> 
+            </div>
+            
             <div class="input-container">
                 <label id="label" for="input">Size:</label>   
                 <input type="number" id="input" min="1" max="100" placeholder="16">  
-            </div>
+            </div>  
+            
+            
         </div>
-  
+
         <div class="sketchContainer" id="divContainer"></div>
+        
 
     </main>   
+    <footer class="footer">
+        <p>Created by <a href="https://github.com/lucas-leiva" target="_blank" class="anchor">Lucas Leiva</a></p>
+    </footer>
            
         
     

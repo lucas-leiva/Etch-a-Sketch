@@ -10,28 +10,26 @@ body{
 .title{
     color: #184e78;
     text-align: center;
-    margin-bottom: 0;
+    margin-bottom: 3rem;
     margin-left: 100px;
     text-shadow: 5px 0 0 #c53e47;
 }
 
 .main{
-    display: flex;   
-    justify-content: flex-start; /* Centra los elementos horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    gap: 10px;  /*Espaciado entre elementos */
-    height: 100vh; /* Ocupa toda la pantalla */    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .btn-container {
     display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: flex-start;
-    padding-left: 100px;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* Espacio entre .buttons y .input-container */
+    margin-bottom: 3rem; /* Espacio entre botones y el sketchContainer */
 }
 
-.btn{
+.btn{    
     padding: 15px 20px;
     font-size: 10px;
     width: 200px;
@@ -42,6 +40,15 @@ body{
     border-radius: 1px;
     box-shadow: 5px 5px 0 #c53e47;
     font-family: "Press Start 2P", system-ui;
+
+}
+
+
+.buttons{
+    display: flex;
+    align-items: center; /* Alinea el input y el label en el mismo nivel */
+    gap: 30px;
+
 }
 
 .btn:hover{
@@ -67,18 +74,38 @@ body{
     flex-wrap: wrap;
     width: 500px; /* Tamaño fijo para evitar que se agrande demasiado */
     height: 500px; /* Asegura una proporción cuadrada */
-    background-color: #fcf4f1;
-    border: 3px outset #333;    
-    flex-shrink: 0; /* Evita que se reduzca si el espacio es limitado */
-    margin-left: 100px;
+    background-color: #fcf4f1;    
+    border: 3px solid #333;      
+    flex-shrink: 0; /* Evita que se reduzca si el espacio es limitado */      
+    margin-bottom: 30px;
 }
 
 .square{      
     width: calc(100% / 16); /* 16 columnas */
     height: calc(100% / 16); /* 16 filas */
-    text-align: center;
+    background-color: #fcf4f1; /* Fondo base definido */
+    outline: 1px solid #333;
+    box-sizing: border-box;
 }
 
 .square-change{
     background-color: blue;
 }
+
+.deleteActive{
+    background-color:#c53e47 ;
+    color: white;
+    border-radius: 1px;
+    box-shadow: 5px 5px 0 #184e78;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+}
+
+.anchor{
+    text-decoration: none;
+    color: #c53e47;
+    text-align: center;    
+}    

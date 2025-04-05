@@ -1,67 +1,96 @@
+// Estado global
 let isMouseDown = false;
-let isRandomColor = false; 
+let isRandomColor = false;
+let isDeleteActive = false;
 
-document.body.onload = () => addElement(); // Se ejecuta al cargar la página
+// Elementos del DOM
+const inputNumber = document.getElementById("input");
+const label = document.getElementById("label");
+const divContainer = document.getElementById("divContainer");
+const deleteButton = document.getElementById("deleteONESquare");
+const sketchContainer = document.getElementById("divContainer");
+const toggleRandomBtn = document.getElementById("toggleRandom");
+
+// Cargar al iniciar la página
+document.body.onload = () => addElement();
+
+// Evento para crear una nueva cuadrícula al cambiar el input
+inputNumber.addEventListener("input", addElement);
+
+// Evento para finalizar el arrastre al soltar el mouse
+document.addEventListener("mouseup", () => {
+    isMouseDown = false;
+});
+
+// Evento para alternar modo aleatorio
+toggleRandomBtn.addEventListener("click", () => {
+    isRandomColor = !isRandomColor;
+    toggleRandomBtn.textContent = isRandomColor
+        ? "UNRANDOMIZED COLOR"
+        : "RANDOMIZED COLOR";
+        toggleRandomBtn.classList.toggle("deleteActive");
+});
+
+// Evento para activar/desactivar el modo borrar
+deleteButton.addEventListener("click", () => {
+    isDeleteActive = !isDeleteActive;
+    deleteButton.classList.toggle("deleteActive");
+});
+
+// Evento para borrar un cuadro al hacer clic (si el modo borrar está activo)
+sketchContainer.addEventListener("click", (e) => {
+    if (isDeleteActive && e.target !== sketchContainer) {
+        e.target.style.backgroundColor = "#fcf4f1"; // Color blanco original
+    }
+});
+
+// FUNCIONES -------------------------
 
 function addElement() {
-    const inputNumber = document.getElementById("input");
-    let valueUser = inputNumber.value.trim(); // Obtener el valor actual del input
+    let valueUser = inputNumber.value.trim();
     let size = valueUser ? valueUser * valueUser : 256;
-    let label = document.getElementById("label");
-    label.innerHTML = valueUser ? valueUser + " x " : "16 x";
+    
+    label.innerHTML = valueUser ? `${valueUser} x` : "16 x";
 
-    const divContainer = document.getElementById("divContainer");
-
-    // Limpiar el contenedor antes de agregar nuevos elementos
+    // Limpiar contenido anterior
     cleanSquare();
+    deleteSquare();
 
-    if(size !=0){
-        deleteSquare();
+    if (size !== 0) {
         for (let i = 0; i < size; i++) {
             const newDiv = document.createElement("div");
             newDiv.classList.add("square");
 
-            if (!valueUser) {
-                // newDiv.innerText = i + 1; // Solo numerar si es el caso por defecto
-            } else {
+            if (valueUser) {
                 newDiv.style.height = `calc(100% / ${valueUser})`;
                 newDiv.style.width = `calc(100% / ${valueUser})`;
             }
 
             divContainer.appendChild(newDiv);
-            color(newDiv);
+            enableColoring(newDiv);
         }
-    }    
+    }
 }
 
-document.addEventListener("mouseup", () => {
-    isMouseDown = false; // Se desactiva el arrastre
-});
-
-function color(newDiv) {
-    newDiv.addEventListener("mousedown", () => {
-        isMouseDown = true;
-        applyColor(newDiv); // Cambia el color al hacer clic
+function enableColoring(div) {
+    div.addEventListener("mousedown", () => {
+        if (!isDeleteActive) {
+            isMouseDown = true;
+            applyColor(div);
+        }
     });
 
-    newDiv.addEventListener("mouseover", () => {
-        if (isMouseDown) {
-            applyColor(newDiv); // Cambia el color al arrastrar
+    div.addEventListener("mouseover", () => {
+        if (!isDeleteActive && isMouseDown) {
+            applyColor(div);
         }
     });
 }
-
-document.getElementById("toggleRandom").addEventListener("click", () => {
-    isRandomColor = !isRandomColor; // Alterna el estado
-    const btn = document.getElementById("toggleRandom");
-    btn.textContent = isRandomColor ? "Desactivar Colores Aleatorios" : "Activar Colores Aleatorios";
-});
 
 function applyColor(div) {
-    div.style.backgroundColor = isRandomColor ? getRandomColor() : "#212121"; // Usa color aleatorio si está activado
+    div.style.backgroundColor = isRandomColor ? getRandomColor() : "#212121";
 }
 
-// Genera un color aleatorio en formato RGB
 function getRandomColor() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
@@ -70,21 +99,14 @@ function getRandomColor() {
 }
 
 function cleanSquare() {
-    const divContainer = document.getElementsByClassName("square");
-    
-    if(divContainer){
-        for(let i = 0; i<divContainer.length; i++){
-           divContainer[i].style.backgroundColor = "#fcf4f1"; 
-        }        
+    const squares = document.getElementsByClassName("square");
+    for (let i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = "#fcf4f1";
     }
 }
 
-function deleteSquare(){
-    const divContainer = document.getElementById("divContainer");
+function deleteSquare() {
     while (divContainer.firstChild) {
         divContainer.removeChild(divContainer.firstChild);
     }
 }
-
-// Evento para actualizar la cuadrícula cuando cambia el input
-document.getElementById("input").addEventListener("input", addElement);
